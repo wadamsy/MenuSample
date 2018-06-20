@@ -1,8 +1,11 @@
 package wadamasaya.menusample;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,8 +23,18 @@ public class MenuThanksActivity extends AppCompatActivity {
 
         tvMenuName.setText(menuName);
         tvMenuPrice.setText(menuPrice);
+
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
-    public void onBackButtonClick(View view){
-        finish();
-     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
